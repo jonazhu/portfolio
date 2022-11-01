@@ -1,0 +1,17 @@
+theme: jekyll-theme-minimal
+title: Ying Li
+description: Applied Researcher, Data Science Practitioner
+logo: assets/images/JonZhu.png
+show_downloads: true
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+
+# Permalinks
+permalink:        pretty
+
