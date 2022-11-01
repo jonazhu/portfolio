@@ -1,8 +1,8 @@
 theme: jekyll-theme-minimal
-title: Ying Li
-description: Applied Researcher, Data Science Practitioner
+title: Jonathan Zhu
+description: Biology and Mathematics
 logo: assets/images/JonZhu.png
-show_downloads: true
+show_downloads: false
 
 defaults:
   -
