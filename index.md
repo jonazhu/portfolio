@@ -47,9 +47,9 @@ P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Submit
 
 **J. A. Zhu**, C. Wagner, S. Carlson, J. W. Miller, P. Jantsch, P. Isihara. Data science for the Housing Equity Initiative: a case study on community mathematics for education. (In preparation).
 
-**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers. (Submitted).
+**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230.
 
-**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers. (Submitted).
+**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115.
 
 **J. A. Zhu**, N. C. Folino-Rorem. “A novel sampling method for collecting the polyp stage of the invasive freshwater hydrozoan Craspedacusta sowerbii in aquatic habitats.” 23rd International Conference on Aquatic Invasive Species (ICAIS), Halifax, Nova Scotia, May 12-16, 2024.
 
