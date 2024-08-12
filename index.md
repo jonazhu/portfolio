@@ -5,6 +5,9 @@ I am a current Master's student at Carnegie Mellon University studying computati
 
 ## Graduate Work
 * Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
+* Practical Computing for Biologists: I made a [Python script](bact_genome) that reads a bacterial genome and produces an output file of all possible protein-coding sequences. The script can also translate these sequences and BLAST them against a database.
+* Bioinformatics Data Science Integration Practicum: I worked with a team to produce a pipeline that reads protein sequences, introduces mutations specified by the user, and predicts the structural effects of these mutations. See the repository of our work [here](https://github.com/jonazhu/03713_bioinformatics_teamblue).
+* Machine Learning for Scientists: I worked with a team to predict the toxicity of various compounds using molecular features; the project includes several machine learning algorithms implemented without major library functions. See the repository of our work [here](https://github.com/jonazhu/02620_ml_group5).
 
 ## Undergrad Work
 Below is a portfolio of the major papers and presentations from courses and research I've done in my time in undergrad, related to my majors of Biology and Mathematics w/ Statistics concentration. The projects themselves are from a variety of classes, some of which I've described below.
