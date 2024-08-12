@@ -1,0 +1,7 @@
+.metric,.estimate,method
+rmse,0.37265063990049185,Generalized Linear Model
+rsq,0.3756243308945688,Generalized Linear Model
+rmse,0.20977382862681462,Random Forest
+rsq,0.8713142412591024,Random Forest
+rmse,0.037501241804309256,XG Boosted Forest
+rsq,0.9936837127173774,XG Boosted Forest

@@ -1,0 +1,5 @@
+"",".metric",".estimate","method"
+"1","accuracy",0.997638724911452,"Random Forest"
+"2","roc_auc",0.000126935770500127,"Random Forest"
+"3","accuracy",0.997638724911452,"XG Boosted Forest"
+"4","roc_auc",0,"XG Boosted Forest"

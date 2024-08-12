@@ -1,0 +1,359 @@
+---
+title: "Programming For Scientists Project Report - Invasive Species Modeling"
+author: "Jonathan Zhu"
+date: "2023-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, show = FALSE)
+
+library(tidyverse)
+library(tidymodels)
+library(readr)
+library(raster)
+library(dplyr)
+library(data.table)
+
+mycores <- parallel::detectCores(logical = FALSE)
+library(doMC)
+registerDoMC(cores = mycores)
+```
+
+# Tidymodels Machine Learning Models
+Hello! if you are here, you have (i hope) successfully completed the previous Golang and R preprocessing modules. Next, read in the data given as "data_full.csv" from the previous R file. 
+
+```{r}
+data_full <- read_csv("data_full.csv")
+
+#for Parthenium I added a specialline that gives me less occurrences and therefore I can work with it more easily
+#data_full <- filter(data_full, !is.na(Temp))
+```
+
+Next, run this code chunk, which contains all the preprocessing steps needed to clean up the data.
+
+```{r}
+#tidymodels (parsnip) version
+#typical recipe
+occ_recipe <- recipe(present ~., data = data_full) %>%
+  step_rm(gbifID, scientificName) %>%
+  step_filter(!is.na(decimalLatitude)) %>%
+  step_filter(!is.na(decimalLongitude)) %>%
+  step_filter(!is.na(present)) %>%
+  step_impute_bag(elevation) %>%
+  step_impute_bag(depth) %>%
+  step_impute_bag(Temp) %>%
+  step_impute_bag(Diurnal_range) %>%
+  step_impute_bag(Isothermality) %>%
+  step_impute_bag(Temp_Seasonality) %>%
+  step_impute_bag(Max_Temp) %>%
+  step_impute_bag(Min_Temp) %>%
+  step_impute_bag(Wet_Temp) %>%
+  step_impute_bag(Annual_Range) %>%
+  step_impute_bag(Dry_Temp) %>%
+  step_impute_bag(Warm_Temp) %>%
+  step_impute_bag(Cold_Temp) %>%
+  step_impute_bag(Prec) %>%
+  step_impute_bag(Wet_Prec) %>%
+  step_impute_bag(Dry_Prec) %>%
+  step_impute_bag(Prec_Seasonality) %>%
+  step_impute_bag(Prec_Wet_Quart) %>%
+  step_impute_bag(Prec_Dry_Quart) %>%
+  step_impute_bag(Prec_Warm) %>%
+  step_impute_bag(Prec_Cold)
+```
+
+This next code chunk will then define the training/testing split and some folds for tuning.
+
+```{r}
+data_split <- initial_split(data_full, prop = 0.7, strata = present)
+data_train <- training(data_split)
+data_test <- testing(data_split)
+data_folds <- vfold_cv(data_train, v = 20)
+```
+
+Following this, you have the option to run one of three models, or you can run all three: GLM, Random forest, and XGBoost. If you run all three, the metrics are given as a neatly formatted table.
+
+## GLM
+
+```{r}
+#GLM
+glm_model <- linear_reg(penalty = tune(), mixture = tune()) %>%
+  set_engine("glmnet")
+glm_workflow <- workflow() %>%
+  add_model(glm_model) %>%
+  add_recipe(occ_recipe)
+
+#creates a penalty grid with values for the amount of penalty and the amount of mixture
+penalty_grid <- expand_grid(grid_regular(penalty(), levels = 10), mixture = seq(0, 1, by = .1))
+#fits the workflow to the resamples for each of the tuned values, then collects the metrics and returns 
+glm_tune <- glm_workflow %>% 
+  tune_grid(resamples = data_folds, grid = penalty_grid)
+lowest_rmse_glm <- glm_tune %>%
+  select_best("rmse")
+
+glm_fit <- finalize_workflow(glm_workflow, lowest_rmse_glm) %>%
+  fit(data = data_train)
+#uses the testing set to evaluate the entire performance
+glm_test <- augment(glm_fit, new_data = data_test)
+#gives the final metrics
+my_metrics <- metric_set(rmse, rsq)
+
+(glm_metrics <- my_metrics(glm_test, truth = present, estimate = .pred))
+```
+
+## Random Forest
+
+```{r}
+#random forest
+randomforest_model <- rand_forest(mtry = tune(), min_n = tune(), trees = tune()) %>%
+  set_engine('ranger') %>%
+  set_mode('regression')
+
+#creates a workflow with the random forest model and the previous recipe
+randomforest_workflow <- workflow() %>%
+  add_recipe(occ_recipe) %>%
+  add_model(randomforest_model)
+#creates a tuning grid for the random forest
+randomforest_params <- randomforest_model %>% 
+   extract_parameter_set_dials() %>% 
+   finalize(x = data_train %>% dplyr::select(present))
+randomforest_tuning_grid <- grid_max_entropy(randomforest_params, size = 20)
+randomforest_tuned <- randomforest_workflow %>%
+  tune_grid(resamples = data_folds, grid = randomforest_tuning_grid)
+
+lowest_rmse_randfor <- randomforest_tuned %>%
+  select_best("rmse")
+#fits the random forest model to the entire training set
+randfor_fit <- finalize_workflow(randomforest_workflow, lowest_rmse_randfor) %>%
+  fit(data = data_train)
+
+#uses the testing set to evaluate the entire performance
+randfor_test <- augment(randfor_fit, new_data = data_test)
+#gives the final metrics
+my_metrics <- metric_set(rmse, rsq)
+(randfor_metrics <- my_metrics(randfor_test, truth = present, estimate = .pred))
+```
+
+## XGBoost
+
+```{r}
+#xgboost
+xgboost_mod <- boost_tree(tree_depth = tune(),
+                          trees = tune(),
+                          learn_rate = tune(),
+                          min_n = tune(),
+                          loss_reduction = tune(),
+                          sample_size = tune(),
+                          stop_iter = tune()) %>%
+  set_engine('xgboost') %>%
+  set_mode('regression')
+
+#specifies the xgboost workflow with the corresponding model and generic recipe
+xgboost_workflow <- workflow() %>%
+  add_recipe(occ_recipe) %>%
+  add_model(xgboost_mod)
+
+#creates a tuning grid for the parameters and tunes based on the folds
+xgboost_tuning_grid <- grid_max_entropy(extract_parameter_set_dials(xgboost_mod), size = 25)
+xgboost_tuned <- xgboost_workflow %>%
+  tune_grid(resamples = data_folds, grid = xgboost_tuning_grid)
+
+#selects tuned values with the lowest RMSE
+lowest_rmse_xgboost <- xgboost_tuned %>%
+  select_best("rmse")
+
+#fits the data to the entire training set and tests based on the testing set
+xgboost_fit <- finalize_workflow(xgboost_workflow, lowest_rmse_xgboost) %>%
+  fit(data = data_train)
+xgboost_test <- augment(xgboost_fit, new_data = data_test)
+
+my_metrics <- metric_set(rmse, rsq)
+(xgboost_metrics <- my_metrics(xgboost_test, truth = present, estimate = .pred))
+```
+
+## Formatted Regression Metrics
+
+```{r}
+glm_metrics <- glm_metrics %>% mutate(method = "Generalized Linear Model")
+randfor_metrics <- randfor_metrics %>% mutate(method = "Random Forest")
+xgboost_metrics <- xgboost_metrics %>% mutate(method = "XG Boosted Forest")
+
+model_metrics <- dplyr::select(bind_rows(glm_metrics, randfor_metrics, xgboost_metrics), !.estimator)
+
+#will write the metrics too
+write_csv(model_metrics, "ciona_metrics_tidy.csv")
+```
+
+```{r eval = TRUE}
+knitr::kable(model_metrics,
+             caption = "RMSE and Rsq for all models on Regression Prediction of Parthenium sp. spread",
+             col.names = c("Metric", "Value", "Method"),
+             digits = 3)
+```
+
+If your heart so desires, you can then run one of the Random forest or XGBoost on classification mode. However, classification mode will not give you the ability to generate pseudo-probabilities.
+
+## Random Forest
+
+```{r}
+#set as a factor
+data_full <- data_full %>% mutate(present = as.factor(present))
+data_split <- initial_split(data_full, prop = 0.8)
+data_train <- training(data_split)
+data_test <- testing(data_split)
+data_folds <- vfold_cv(data_train, v = 15)
+
+#random forest
+randomforest_model <- rand_forest(mtry = tune(), min_n = tune(), trees = tune()) %>%
+  set_engine('ranger') %>%
+  set_mode('classification')
+
+#creates a workflow with the random forest model and the previous recipe
+randomforest_workflow <- workflow() %>%
+  add_recipe(occ_recipe) %>%
+  add_model(randomforest_model)
+#creates a tuning grid for the random forest
+randomforest_params <- randomforest_model %>% 
+   extract_parameter_set_dials() %>% 
+   finalize(x = data_train %>% dplyr::select(present))
+randomforest_tuning_grid <- grid_max_entropy(randomforest_params, size = 20)
+randomforest_tuned <- randomforest_workflow %>%
+  tune_grid(resamples = data_folds, grid = randomforest_tuning_grid)
+
+lowest_rmse_randfor <- randomforest_tuned %>%
+  select_best("roc_auc")
+#fits the random forest model to the entire training set
+randfor_fit <- finalize_workflow(randomforest_workflow, lowest_rmse_randfor) %>%
+  fit(data = data_train)
+
+#uses the testing set to evaluate the entire performance
+augmented_rf <- parsnip::augment(randfor_fit, new_data = data_test)
+
+rf_rocauc <- roc_auc(data = augmented_rf, c(.pred_1, .pred_0), truth = present, estimator = "hand_till")
+rf_acc <- accuracy(data = augmented_rf, truth = present, estimate = .pred_class)
+
+```
+
+## XGBoost
+
+```{r}
+#xgboost
+xgboost_mod <- boost_tree(tree_depth = tune(),
+                          trees = tune(),
+                          learn_rate = tune(),
+                          min_n = tune(),
+                          loss_reduction = tune(),
+                          sample_size = tune(),
+                          stop_iter = tune()) %>%
+  set_engine('xgboost') %>%
+  set_mode('classification')
+
+#specifies the xgboost workflow with the corresponding model and generic recipe
+xgboost_workflow <- workflow() %>%
+  add_recipe(occ_recipe) %>%
+  add_model(xgboost_mod)
+
+#creates a tuning grid for the parameters and tunes based on the folds
+xgboost_tuning_grid <- grid_max_entropy(extract_parameter_set_dials(xgboost_mod), size = 25)
+xgboost_tuned <- xgboost_workflow %>%
+  tune_grid(resamples = data_folds, grid = xgboost_tuning_grid)
+
+#selects tuned values with the lowest RMSE
+lowest_rmse_xgboost <- xgboost_tuned %>%
+  select_best("roc_auc")
+
+#fits the data to the entire training set and tests based on the testing set
+xgboost_fit <- finalize_workflow(xgboost_workflow, lowest_rmse_xgboost) %>%
+  fit(data = data_train)
+
+augmented_xg <- parsnip::augment(xgboost_fit, new_data = data_test)
+
+xg_rocauc <- roc_auc(data = augmented_xg, c(.pred_1, .pred_0), truth = present, estimator = "hand_till")
+xg_acc <- accuracy(data = augmented_xg, truth = present, estimate = .pred_class)
+```
+
+If you ran both, you can again get the classification metrics in a neatly formatted table.
+
+```{r}
+#classification metrics
+randfor_metrics <- bind_rows(rf_acc, rf_rocauc)
+randfor_metrics <- randfor_metrics %>% mutate(method = "Random Forest")
+xgboost_metrics <- bind_rows(xg_acc, xg_rocauc)
+xgboost_metrics <- xgboost_metrics %>% mutate(method = "XG Boosted Forest")
+
+model_metrics_class <- dplyr::select(bind_rows(randfor_metrics, xgboost_metrics), !.estimator)
+write.csv(model_metrics_class, "parth_class_metrics.csv")
+
+```
+
+```{r eval = TRUE}
+knitr::kable(model_metrics_class,
+             caption = "Accuracy and ROC Score for all models on Regression Prediction of Parthenium sp. spread",
+             col.names = c("Metric", "Value", "Method"),
+             digits = 3)
+```
+
+# Generating Prediction Plots
+
+The code chunks are given for Generalized Linear Model:
+
+```{r eval = TRUE}
+ggplot(data = glm_test) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = .pred)) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Predicted Contour of Invasive Species Spread Probability")
+```
+
+Random forest:
+
+```{r eval = TRUE}
+ggplot(data = randfor_test) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = .pred)) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Predicted Contour of Invasive Species Spread Probability")
+```
+
+And XG Boost:
+
+```{r eval = TRUE}
+ggplot(data = xgboost_test) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = .pred)) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Predicted Contour of Invasive Species Spread Probability")
+```
+
+We also show a plot for XG Boost, but with classification;
+
+```{r eval = TRUE}
+ggplot(data = augmented_xg) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = .pred_class)) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Predicted Contour of Invasive Species Spread Probability")
+```
+
+Finally, the actual presence plot for comparison.
+
+```{r eval = TRUE}
+ggplot(data = xgboost_test) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = present)) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Actual Contour of Invasive Species Spread Probability")
+```
+
+For the pseudo-probability predicted spread, we only show XGBoost, but you can easily modify it to show any other model:
+
+```{r eval = TRUE}
+ggplot(data = xgboost_test) +
+  geom_jitter(aes(x = decimalLongitude, y = decimalLatitude, color = (-log(abs(.pred))))) +
+    labs(x = "Longitude",
+       y = "Latitude",
+       title = "Predicted Contour of Invasive Species Spread Probability")
+```
+
+That forms the end of this module of the project! Next, if your heart desires, you can go on to compare the plots with the `biomod2` generated plots with the file "ml_biomod.rmd". 

@@ -1,0 +1,137 @@
+---
+title: "ml_biomod"
+author: "Jonathan Zhu"
+date: "2023-12-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidymodels)
+library(tidyverse)
+library(raster)
+library(rgbif)
+library(maps)
+library(biomod2)
+library(dplyr)
+library(tidyterra)
+library(ggtext)
+
+mycores <- parallel::detectCores(logical = FALSE)
+library(doMC)
+registerDoMC(cores = mycores)
+
+```
+
+# BIOMOD Modeling
+Hello there! If you're reading this, this is the only document you will need for any `biomod2` based modeling, for comparison to the `tidymodels` based modeling we saw earlier. This document is not meant to be knitted and will produce three plot outputs at the end, one for each thing, as well as save a CSV of the metrics for each model it runs.
+
+The only things that need to be changed here are the data file (directly below) and the filename to which the metrics should be saved, which should be "metrics.csv" by default.
+
+```{r}
+parth <-read.csv("data/ciona_intestinalis_occurrences.csv")
+parth <- parth %>% mutate("present" = 1)
+
+myRespName <- "present"
+myResp <- as.numeric(parth[,myRespName])
+myRespXY <- parth[,c("decimalLatitude", "decimalLongitude")]
+```
+
+```{r}
+#getting in the raster data
+bio1 <- raster("climvars/bio_1.tif")
+bio2 <- raster("climvars/bio_2.tif")
+bio3 <- raster("climvars/bio_3.tif")
+bio4 <- raster("climvars/bio_4.tif")
+bio5 <- raster("climvars/bio_5.tif")
+bio6 <- raster("climvars/bio_6.tif")
+bio7 <- raster("climvars/bio_7.tif")
+bio8 <- raster("climvars/bio_8.tif")
+bio9 <- raster("climvars/bio_9.tif")
+bio10 <- raster("climvars/bio_10.tif")
+bio11 <- raster("climvars/bio_11.tif")
+bio12 <- raster("climvars/bio_12.tif")
+bio13 <- raster("climvars/bio_13.tif")
+bio14 <- raster("climvars/bio_14.tif")
+bio15 <- raster("climvars/bio_15.tif")
+bio16 <- raster("climvars/bio_16.tif")
+bio17 <- raster("climvars/bio_17.tif")
+bio18 <- raster("climvars/bio_18.tif")
+bio19 <- raster("climvars/bio_19.tif")
+
+current_bios = stack(bio1, bio2, bio3, bio4, bio5, bio6, bio7, bio8, bio9, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17, bio18, bio19)
+```
+
+```{r}
+#format the data for biomod
+myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
+                                     expl.var = current_bios,
+                                     resp.xy = myRespXY,
+                                     resp.name = myRespName,
+                                     PA.nb.rep = 5,
+                                     PA.nb.absences = 300,
+                                     PA.strategy = "random",
+                                     na.rm = TRUE)
+
+plot(myBiomodData)
+```
+
+```{r}
+#modeling time
+myBiomodOption <- BIOMOD_ModelingOptions()
+
+myBiomodModelOut <- BIOMOD_Modeling(myBiomodData,
+                                    models = c('GLM', 'RF', 'XGBOOST'),
+                                    bm.options = myBiomodOption,
+                                    CV.nb.rep = 3,
+                                    CV.perc = 0.7,
+                                    prevalence = 0.5,
+                                    var.import = 3,
+                                    metric.eval = c('TSS', 'ROC', 'ACCURACY'),
+                                    scale.models = TRUE,
+                                    do.full.models = FALSE,
+                                    modeling.id = paste("Parthenium sp.", "FirstModeling", sep = ""))
+
+#print some metrics
+myBiomodModelEval <- get_evaluations(myBiomodModelOut)
+dimnames(myBiomodModelEval)
+
+#print some metrics
+tss_res <- myBiomodModelEval %>% 
+  dplyr::filter(metric.eval == "TSS") %>% 
+  select("algo", "validation") %>%
+  rename(TSS = validation)
+roc_res <- myBiomodModelEval %>% 
+  dplyr::filter(metric.eval == "ROC") %>% 
+  select("validation") %>% 
+  rename(ROC = validation)
+acc_res <- myBiomodModelEval %>% 
+  dplyr::filter(metric.eval == "ACCURACY") %>% 
+  select("validation") %>%
+  rename(Accuracy = validation)
+
+metrics <- bind_cols(tss_res, roc_res, acc_res)
+write.csv(metrics, "ciona_metrics.csv")
+
+#variable importance
+get_variables_importance(myBiomodModelOut)
+```
+
+```{r}
+#great now we can move on to plotting
+myBiomodProj <- BIOMOD_Projection(bm.mod = myBiomodModelOut,
+                                  new.env = current_bios,
+                                  proj.name = "current",
+                                  models.chosen = "all",
+                                  metric.binary = "TSS",
+                                  compress = "xz",
+                                  build.clamping.mask = FALSE)
+
+#I believe this created some files on our disk.
+#to view these, run the following:
+plot(myBiomodProj, PA = 'PA1', run = 'RUN1', algo = 'GLM')
+plot(myBiomodProj, PA = 'PA1', run = 'RUN1', algo = 'RF')
+plot(myBiomodProj, PA = 'PA1', run = 'RUN1', algo = 'XGBOOST')
+```
+

@@ -1,0 +1,64 @@
+---
+title: "Programming For Scientists Project Report - Invasive Species Modeling"
+author: "Jonathan Zhu"
+date: "2023-10-30"
+output: html_document
+---
+
+# Preprocessing Data for Invasive Species Modeling
+
+Hi! If you're here, this document is not meant to be knitted into a report, but rather to be used for selective preprocessing of data!
+
+First, if you have not run the Golang preprocessing pipeline yet, please do so; instructions are in the Readme. But once you have done that, this part is relatively simple to do. Simply make sure that the data outputted from Golang is in the format "out.csv" and run every code chunk!
+
+Before anything else, we need to load all the required libraries, of which there are many. There is also a short section here that will allow for parallel processing, which can be helpful later.
+
+```{r setup, include=FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, show = FALSE)
+
+library(tidyverse)
+library(tidymodels)
+library(readr)
+library(raster)
+library(dplyr)
+
+mycores <- parallel::detectCores(logical = FALSE)
+library(doMC)
+registerDoMC(cores = mycores)
+```
+
+This next chunk will add all the climactic variables into the mix.
+
+```{r}
+#extracting variables
+#worldClim climactic variables 
+r <- getData("worldclim",var="bio",res=10)
+
+#IMPORTANT! If your datafile is NOT out.csv as given by Golang, change it here!
+datafile = "out.csv"
+data <- read_csv(datafile)
+
+rNew <- r[[c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)]]
+names(rNew) <- c("Temp","Diurnal_range","Isothermality","Temp_Seasonality","Max_Temp", "Min_Temp", "Wet_Temp", "Annual_Range", "Dry_Temp", "Warm_Temp", "Cold_Temp", "Prec", "Wet_Prec", "Dry_Prec", "Prec_Seasonality", "Prec_Wet_Quart", "Prec_Dry_Quart", "Prec_Warm", "Prec_Cold")
+
+values <- extract(rNew, data %>% dplyr::select("decimalLatitude", "decimalLongitude"))
+
+df <- cbind.data.frame(coordinates(data %>% dplyr::select("decimalLatitude", "decimalLongitude")), values)
+
+data <- data %>% arrange(decimalLatitude)
+df <- df %>% arrange(decimalLatitude)
+
+data_full = bind_cols(data, df)
+
+# a short section to remove some pesky duplicates
+data_full <- data_full %>% dplyr::select(!decimalLatitude...8)
+data_full <- data_full %>% dplyr::select(!decimalLongitude...9)
+data_full <- data_full %>% mutate(decimalLatitude = decimalLatitude...3)
+data_full <- data_full %>% mutate(decimalLongitude = decimalLongitude...4)
+data_full <- data_full %>% dplyr::select(!decimalLatitude...3)
+data_full <- data_full %>% dplyr::select(!decimalLongitude...4)
+
+write_csv(data_full, "data_full.csv")
+```
+
+And that should be just about it! Now you can put this into Golang for any EDA you wish to conduct! Alternatively, move over to ml_model.rmd and run the machine learning models of your choice!
