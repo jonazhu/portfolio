@@ -4,7 +4,7 @@ I am a current Master's student at Carnegie Mellon University studying computati
 # My Work
 
 ## Graduate Work
-
+* Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
 
 ## Undergrad Work
 Below is a portfolio of the major papers and presentations from courses and research I've done in my time in undergrad, related to my majors of Biology and Mathematics w/ Statistics concentration. The projects themselves are from a variety of classes, some of which I've described below.
