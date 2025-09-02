@@ -1,7 +1,11 @@
 # About Me
 I am a recent Carnegie Mellon University graduate with a Master's in computational biology, building on my experiences from my undergraduate education at Wheaton College. I am seeking to further develop my skillset and refine my interests so as to further pursue research in biology, mathematics, and computer science. 
 
+My past research experience largely dealt with freshwater jellyfish, producing two publications and two conference presentations discussing the life cycle progression and the collection of these organisms. In continuing this research, I am currently working on collecting and analyzing imaging data with computer vision tools to further unravel specific transitions in the life of *Craspedacusta sowerbii* polyps. 
+
 I currently work as an adjunct instructor for Wheaton College teaching computer science, stemming from my wide range of experience as a TA. 
+
+For a more detailed look at my work and experience, please consult [my CV](jonathanzhu_cv.pdf).
 
 # My Work
 
@@ -36,11 +40,9 @@ K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem
 Below is a portfolio of the major papers and presentations from courses and research I've done in my time in undergrad, related to my majors of Biology and Mathematics w/ Statistics concentration. The projects themselves are from a variety of classes, some of which I've described below.
 
 ### Biology Research
-My research in the Wheaton College Biology Department is currently wrapping up with preparing a few manuscripts for publication. Our work focuses on the general ecology and the environmental factors influencing gonad formation in the freshwater jellyfish Craspedacusta sowerbii, an invasive species originally from China now found on every continent except Antarctica. I produced a [preliminary report](BIOL_ResearchReport_Spring23.pdf) on my work.
+My research in the Wheaton College Biology Department has produced two publications and two conference presentations. Our work focuses on the general ecology and the environmental factors influencing gonad formation in the freshwater jellyfish *Craspedacusta sowerbii*, an invasive species originally from China now found on every continent except Antarctica. In addition to the above, I produced a [preliminary report](biology_research/BIOL_ResearchReport_Spring23.pdf) on my work that formed the basis of my future publications.
 
-My work is currently in progress in two publications:
-* **J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*.
-* K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*.
+I am currently working on collecting and analyzing imaging data with computer vision tools to further unravel specific transitions in the life of *Craspedacusta sowerbii* polyps, building on previous unpublished data. We hope that this project will produce a conference presentation and/or a publication.
 
 ### Biology Coursework
 * Modeling the Systems of Life: In this class, I was introduced to biological research methods and the model organism Cordylophora caspia, an invasive, colonial hydroid found in the class Hydrozoa. I conducted PCR and Gel Electrophoresis on hydranth (feeding polyp) DNA, wrote a [literature review](biol252_literature_review.pdf), and conducted a half-semester long research project on the effects of eutrophication of C. caspia growth and wrote the [research report](biol252_research_paper.pdf).
