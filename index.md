@@ -1,7 +1,30 @@
 # About Me
-I am a current Master's student at Carnegie Mellon University studying computational biology, building on my experiences from my undergraduate education at Wheaton College. Currently, I am seeking to further develop my skillset and refine my interests so as to further pursue research in biology.
+I am a recent Carnegie Mellon University graduate with a Master's in computational biology, building on my experiences from my undergraduate education at Wheaton College. I am seeking to further develop my skillset and refine my interests so as to further pursue research in biology, mathematics, and computer science. 
+
+I currently work as an adjunct instructor for Wheaton College teaching computer science, stemming from my wide range of experience as a TA. 
 
 # My Work
+
+## Full List of Publications and Presentations
+
+**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. https://doi.org/10.3390/biology13080645
+- Also see my repository with full data and data analysis code: https://github.com/jonazhu/craspedacustasampling 
+
+K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. https://doi.org/10.3390/biology13121069
+
+P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Accepted).
+
+**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, https://open.umn.edu/opentextbooks/textbooks/1697.
+
+**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115. Open Textbook Library, https://open.umn.edu/opentextbooks/textbooks/1697.
+
+**J. A. Zhu**, N. C. Folino-Rorem. “A novel sampling method for collecting the polyp stage of the invasive freshwater hydrozoan *Craspedacusta sowerbii* in aquatic habitats.” 23rd International Conference on Aquatic Invasive Species (ICAIS), Halifax, Nova Scotia, May 12-16, 2024.
+
+A. Anil, L. Michal, X. L. Zhang, **J. A. Zhu**. “Enhancing Drug Discovery for Circadian Rhythm Regulation through Toxicity Classification of CRY1 Protein Molecules.” Carnegie Mellon University 2024 Computational Biology Project Poster Presentations, Pittsburgh, PA, May 2024.
+
+K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem, P. Cartwright. “Life Cycle Transitions in the Freshwater Jellyfish, *Craspedacusta sowerbii*.” Society for Integrative and Comparative Biology (SICB) Annual Meeting 2024, Seattle, WA, January 2-6, 2024.
+
+**J. A. Zhu**, P. A. Jantsch. “A Decision Tree Model and Misclassification Metric to Predict Relative Risks of Property Tax Sales in Chicago’s South Side.” Wheaton College 2022 Sciences Research Poster Presentations, Wheaton, IL, October 2022. 
 
 ## Graduate Work
 * Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
@@ -40,24 +63,3 @@ I have also aided a professor in a publication on clique enumeration; this publi
 * Mathematical Modeling: In this class, I learned about the process of making mathematical models to describe real-world phenomena. The class taught concepts such as linear regression, interpolation, splines, numerical solutions to differential equations, and basic linear programming. I applied these concepts into two reports involving these techniques, one on fishery management and another on shipping optimization. 
 * Machine Learning: This course introduced basic machine learning concepts such as the k-nearest neighbors model, PCA, and penalized regression and taught them largely in relation to R, and I applied these into a [project report](math386_machinelearning_model.html) on predicting the levels of microscopic particulate matter in air based on atmospheric conditions. 
 
-## Full List of Publications and Presentations
-
-**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. (Accepted).
-
-K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. (Under review).
-
-P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Submitted).
-
-**J. A. Zhu**, C. Wagner, S. Carlson, J. W. Miller, P. Jantsch, P. Isihara. Data science for the Housing Equity Initiative: a case study on community mathematics for education. (In preparation).
-
-**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230.
-
-**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115.
-
-**J. A. Zhu**, N. C. Folino-Rorem. “A novel sampling method for collecting the polyp stage of the invasive freshwater hydrozoan Craspedacusta sowerbii in aquatic habitats.” 23rd International Conference on Aquatic Invasive Species (ICAIS), Halifax, Nova Scotia, May 12-16, 2024.
-
-A. Anil, L. Michal, X. L. Zhang, **J. A. Zhu**. “Enhancing Drug Discovery for Circadian Rhythm Regulation through Toxicity Classification of CRY1 Protein Molecules.” Carnegie Mellon University 2024 Computational Biology Project Poster Presentations, Pittsburgh, PA, May 2024.
-
-K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem, P. Cartwright. “Life Cycle Transitions in the Freshwater Jellyfish, Craspedacusta sowerbii.” Society for Integrative and Comparative Biology (SICB) Annual Meeting 2024, Seattle, WA, January 2-6, 2024.
-
-**J. A. Zhu**, P. A. Jantsch. “A Decision Tree Model and Misclassification Metric to Predict Relative Risks of Property Tax Sales in Chicago’s South Side.” Wheaton College 2022 Sciences Research Poster Presentations, Wheaton, IL, October 2022. 
