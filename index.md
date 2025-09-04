@@ -9,18 +9,20 @@ For a more detailed look at my work and experience, please consult [my CV](jonat
 
 # My Work
 
-## Full List of Publications and Presentations
+## Publications
 
-**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. [https://doi.org/10.3390/biology13080645]
-- Also see my repository with full data and data analysis code: https://github.com/jonazhu/craspedacustasampling 
+**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. [https://doi.org/10.3390/biology13080645](https://doi.org/10.3390/biology13080645)
+- Also see my repository with full data and data analysis code: [https://github.com/jonazhu/craspedacustasampling](https://github.com/jonazhu/craspedacustasampling)
 
-K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. [https://doi.org/10.3390/biology13121069]
+K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. [https://doi.org/10.3390/biology13121069](https://doi.org/10.3390/biology13121069)
 
 P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Accepted).
 
-**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697].
+**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697](https://open.umn.edu/opentextbooks/textbooks/1697).
 
-**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697].
+**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697](https://open.umn.edu/opentextbooks/textbooks/1697).
+
+## Poster and Oral Presentations
 
 **J. A. Zhu**, N. C. Folino-Rorem. “A novel sampling method for collecting the polyp stage of the invasive freshwater hydrozoan *Craspedacusta sowerbii* in aquatic habitats.” 23rd International Conference on Aquatic Invasive Species (ICAIS), Halifax, Nova Scotia, May 12-16, 2024.
 
@@ -41,6 +43,8 @@ K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem
 ### Other Graduate Work
 * Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
 * Practical Computing for Biologists: I made a [Python script](bact_genome) that reads a bacterial genome and produces an output file of all possible protein-coding sequences. The script can also translate these sequences and BLAST them against a database.
+
+**Other relevant courses**: Neural Networks and Deep Learning in Science, Computational Molecular Biology and Genomics, Algorithms and Advanced Data Structures, Applied Cell and Molecular Biology, Data Science for Biological Scientists, Practical Computing for Biologists, Quantitative Genetics
 
 ## Undergraduate Work
 For a detailed look at some key highlights of my undergraduate work, [click here](undergrad_work.md).
