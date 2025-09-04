@@ -11,16 +11,16 @@ For a more detailed look at my work and experience, please consult [my CV](jonat
 
 ## Full List of Publications and Presentations
 
-**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. https://doi.org/10.3390/biology13080645
+**J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. [https://doi.org/10.3390/biology13080645]
 - Also see my repository with full data and data analysis code: https://github.com/jonazhu/craspedacustasampling 
 
-K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. https://doi.org/10.3390/biology13121069
+K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. [https://doi.org/10.3390/biology13121069]
 
 P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Accepted).
 
-**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, https://open.umn.edu/opentextbooks/textbooks/1697.
+**J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697].
 
-**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115. Open Textbook Library, https://open.umn.edu/opentextbooks/textbooks/1697.
+**J. A. Zhu**, C. Wagner, Y. Li. Advanced Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 1015-1115. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697].
 
 **J. A. Zhu**, N. C. Folino-Rorem. “A novel sampling method for collecting the polyp stage of the invasive freshwater hydrozoan *Craspedacusta sowerbii* in aquatic habitats.” 23rd International Conference on Aquatic Invasive Species (ICAIS), Halifax, Nova Scotia, May 12-16, 2024.
 
@@ -30,11 +30,17 @@ K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem
 
 **J. A. Zhu**, P. A. Jantsch. “A Decision Tree Model and Misclassification Metric to Predict Relative Risks of Property Tax Sales in Chicago’s South Side.” Wheaton College 2022 Sciences Research Poster Presentations, Wheaton, IL, October 2022. 
 
-## Graduate Work
-* Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
-* Practical Computing for Biologists: I made a [Python script](bact_genome) that reads a bacterial genome and produces an output file of all possible protein-coding sequences. The script can also translate these sequences and BLAST them against a database.
+## Graduate Work Repositories
 * Bioinformatics Data Science Integration Practicum: I worked with a team to produce a pipeline that reads protein sequences, introduces mutations specified by the user, and predicts the structural effects of these mutations. See the repository of our work [here](https://github.com/jonazhu/03713_bioinformatics_teamblue).
 * Machine Learning for Scientists: I worked with a team to predict the toxicity of various compounds using molecular features; the project includes several machine learning algorithms implemented without major library functions. See the repository of our work [here](https://github.com/jonazhu/02620_ml_group5).
+* Biological Modeling and Simulation: Worked with a team in a two-part project to detect the positions of cells in microscope images and track these cells over time to extract insights. See the repository of our work [here](https://github.com/darin-tb/TrackLife).
+* Genomics and Epigenetics of the Brain: Conducted statistical analyses on open chromatin regions in the genomes of hundreds of mammals in relation to their neural traits, specifically hypselodonty (infinitely growing teeth). See the repository of our work [here](https://github.com/shashkat/Genomics-and-Epigenetics-of-the-Brain).
+* Automation: Designed and implemented stopping rules and criteria for advanced active learning algorithms in the context of cell video data embeddings. See the repository of our work [here](https://github.com/jonazhu/ACTIVibrio).
+* Modeling Evolution: Ran simulations on various factors influencing extinction, including natural selection, invasive species, and habitat degradation. See the repository of our work [here](https://github.com/jonazhu/extinctionmodeling).
+
+### Other Graduate Work
+* Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a report](programming_report.pdf), and a [presentation](programming_presentation.pdf).
+* Practical Computing for Biologists: I made a [Python script](bact_genome) that reads a bacterial genome and produces an output file of all possible protein-coding sequences. The script can also translate these sequences and BLAST them against a database.
 
 ## Undergrad Work
 Below is a portfolio of the major papers and presentations from courses and research I've done in my time in undergrad, related to my majors of Biology and Mathematics w/ Statistics concentration. The projects themselves are from a variety of classes, some of which I've described below.
