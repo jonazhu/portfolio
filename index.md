@@ -45,7 +45,7 @@ K. Winata, **J. A. Zhu**, J. Langguth, C. G. Davis, M. Perry, N. C. Folino-Rorem
 * Programming for Scientists: I made a pipeline using Golang and R that takes species occurrence data, cleans it, and predicts its potential spread. This resulted in the [pipeline itself](programming_project), [a writeup](programming_project/programming_report.pdf), and a [presentation](programming_project/programming_presentation.pdf).
 * Practical Computing for Biologists: I made a [Python script](bact_genome) that reads a bacterial genome and produces an output file of all possible protein-coding sequences. The script can also translate these sequences and BLAST them against a database.
 
-**Other relevant courses**: Neural Networks and Deep Learning in Science, Computational Molecular Biology and Genomics, Algorithms and Advanced Data Structures, Applied Cell and Molecular Biology, Data Science for Biological Scientists, Practical Computing for Biologists, Introduction to Statistical Genetics, Quantitative Genetics
+**Other relevant courses**: Computational Molecular Biology and Genomics, Algorithms and Advanced Data Structures, Applied Cell and Molecular Biology, Data Science for Biological Scientists, Practical Computing for Biologists, Introduction to Statistical Genetics, Quantitative Genetics
 
 ## Undergraduate Work
 For a detailed look at some key highlights of my undergraduate work, [click here](undergrad_work.md).
