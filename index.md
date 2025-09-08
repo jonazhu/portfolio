@@ -9,6 +9,8 @@ For a more detailed look at my work and experience, please consult [my CV](jonat
 
 # My Work
 
+My work on *Craspedacusta sowerbii* has been featured on official [NOAA Sea Grant news](https://seagrant.noaa.gov/illinois-indiana-supported-research-finds-freshwater-jellyfish-may-increase-in-numbers-as-great-lakes-waters-warm/) and on the [Chicago Tribune](https://www.chicagotribune.com/2025/02/28/freshwater-jellyfish-in-wolf-lake-focus-of-march-calumet-revisited-forum/).
+
 ## Publications
 
 **J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. [https://doi.org/10.3390/biology13080645](https://doi.org/10.3390/biology13080645)
