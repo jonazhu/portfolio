@@ -1,7 +1,7 @@
 # About Me
 I am a recent Carnegie Mellon University graduate with a Master's in computational biology, building on my experiences from my undergraduate education at Wheaton College. I am seeking to further develop my skillset and refine my interests so as to further pursue research in biology, mathematics, and computer science. 
 
-My past research experience largely dealt with freshwater jellyfish, producing two publications and two conference presentations discussing the life cycle progression and the collection of these organisms. In continuing this research, I am currently working on collecting and analyzing imaging data with computer vision tools to further unravel specific transitions in the life of *Craspedacusta sowerbii* polyps, building on previous unpublished data.
+My past research experience largely dealt with the freshwater jellyfish *Craspedacusta sowerbii*, producing two publications and two conference presentations discussing the life cycle progression and the collection of these organisms. In continuing this research, I am currently working on collecting and analyzing imaging data with computer vision tools to further unravel specific transitions in the life of *Craspedacusta sowerbii* polyps, building on previous unpublished data.
 
 I currently work as an adjunct instructor for Wheaton College teaching computer science, stemming from my wide range of experience as a TA. 
 
