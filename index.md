@@ -10,7 +10,7 @@ For a more detailed look at my work and experience, please consult [my CV](jonat
 # My Work
 
 My work on *Craspedacusta sowerbii* has been featured on official [NOAA Sea Grant news](https://seagrant.noaa.gov/illinois-indiana-supported-research-finds-freshwater-jellyfish-may-increase-in-numbers-as-great-lakes-waters-warm/) and on the [Chicago Tribune](https://www.chicagotribune.com/2025/02/28/freshwater-jellyfish-in-wolf-lake-focus-of-march-calumet-revisited-forum/).
-- PDF archives of these articles: 
+- PDF archives of these articles: [NOAA Sea Grant News](articles/noaaseagrant_2025.pdf), [Chicago Tribune](articles/chicagotribune_2025.pdf)
 
 ## Publications
 
