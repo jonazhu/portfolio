@@ -15,7 +15,7 @@ My work on *Craspedacusta sowerbii* has been featured on official [NOAA Sea Gran
 ## Publications
 
 **J. A. Zhu**, N. C. Folino-Rorem. Effectiveness of Sampling Techniques for Collecting the Polyp Stage of the Invasive Freshwater Hydrozoan *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 645. [https://doi.org/10.3390/biology13080645](https://doi.org/10.3390/biology13080645)
-- Also see my repository with full data and data analysis code: [https://github.com/jonazhu/craspedacustasampling](https://github.com/jonazhu/craspedacustasampling)
+- Also see my repository with RMarkdown data analysis code and full dataset: [https://github.com/jonazhu/craspedacustasampling](https://github.com/jonazhu/craspedacustasampling)
 
 K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. [https://doi.org/10.3390/biology13121069](https://doi.org/10.3390/biology13121069)
 
