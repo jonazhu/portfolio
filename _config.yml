@@ -1,6 +1,9 @@
 theme: jekyll-theme-minimal
 title: Jonathan Zhu
-description: "M.S., Computational Biology, Carnegie Mellon University\nB.S. Biology, Wheaton College\nB.S. Mathematics with Statistics, Wheaton College"
+description: | 
+              M.S., Computational Biology, Carnegie Mellon University
+              B.S. Biology, Wheaton College
+              B.S. Mathematics with Statistics, Wheaton College"
 logo: assets/images/zhu_jonathan.png
 show_downloads: false
 
