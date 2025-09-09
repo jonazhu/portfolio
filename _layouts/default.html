@@ -23,15 +23,15 @@
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub </a></p>
-        {% endif %}
-
         {% if site.github.is_user_page %}
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
 
       <p class="view"><a href="https://www.linkedin.com/in/jonathan-zhu-88a3a01aa/">My Linkedin Profile</a></p>
+
+        {% if site.github.is_project_page %}
+        <p class="view"><a href="{{ site.github.repository_url }}">View the contents of my portfolio on GitHub </a></p>
+        {% endif %}
 
       <!-- <p class="view"><a href="http://www.evanalysiscorp.com/">My Business Site</a></p> -->
 
