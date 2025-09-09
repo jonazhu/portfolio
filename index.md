@@ -19,7 +19,7 @@ My work on *Craspedacusta sowerbii* has been featured on official [NOAA Sea Gran
 
 K. Winata, **J. A. Zhu**, K. Hanselman, E. Zerbe, J. Langguth, N. C. Folino-Rorem, P. Cartwright. Life cycle transitions in the freshwater jellyfish *Craspedacusta sowerbii*. *Biology* **2024**, *13*, 1069. [https://doi.org/10.3390/biology13121069](https://doi.org/10.3390/biology13121069)
 
-P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Accepted).
+P. Isihara, **J. A. Zhu**. Clique enumeration in a math capstone course. (Accepted to be published in PRIMUS).
 
 **J. A. Zhu**. Exploratory Data Analysis, in An Introduction to Python Jupyter Notebooks for College Math Teachers, pages 155-230. Open Textbook Library, [https://open.umn.edu/opentextbooks/textbooks/1697](https://open.umn.edu/opentextbooks/textbooks/1697).
 
